@@ -10,8 +10,10 @@ class InputSelectContainer extends Component {
 		dropDownIsShown: false,
 		itemsContainerHeight: 0,
 		listOfItems: [],
+		filteredItems: [],
 		loading: false,
 		generalMessage: '',
+		searchedText: '',
 	};
 	componentDidMount() {
 		this.setState({ loading: true });
@@ -42,6 +44,16 @@ class InputSelectContainer extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		let filteredItems;
+		if (this.state.searchedText !== prevState.searchedText) {
+			const searchedText = this.state.searchedText;
+			const fetchedItems = this.state.listOfItems;
+			filteredItems = fetchedItems.filter(fetchedItem => fetchedItem.name.first.includes(searchedText));
+			this.setState({
+				filteredItems: filteredItems,
+			});
+		}
+
 		let itemsContainerHeight;
 		if (this.state.generalMessage) {
 			itemsContainerHeight = 0;
@@ -56,14 +68,27 @@ class InputSelectContainer extends Component {
 	}
 
 	onSelectSearchHandler = e => {
-		console.log(e);
+		const searchedText = e;
+		this.setState({ searchedText });
 	};
 	onSelectIconClickedHandler = () => {
 		const dropDownIsShown = this.state.dropDownIsShown;
 		this.setState({ dropDownIsShown: !dropDownIsShown });
 	};
+
+	onInputClickedHandler = () => {
+		const dropDownIsShown = this.state.dropDownIsShown;
+		this.setState({ dropDownIsShown: !dropDownIsShown });
+	};
 	render() {
-		const { dropDownIsShown, itemsContainerHeight, listOfItems, loading, generalMessage } = this.state;
+		const {
+			dropDownIsShown,
+			itemsContainerHeight,
+			listOfItems,
+			loading,
+			generalMessage,
+			filteredItems,
+		} = this.state;
 		return loading ? (
 			<Spinner />
 		) : generalMessage ? (
@@ -73,10 +98,12 @@ class InputSelectContainer extends Component {
 				<InputSelect
 					searchable
 					onSelectSearch={this.onSelectSearchHandler}
-					dropDownIsShown={dropDownIsShown}
 					onSelectIconClicked={this.onSelectIconClickedHandler}
+					onInputClicked={this.onInputClickedHandler}
+					dropDownIsShown={dropDownIsShown}
 					itemsContainerHeight={dropDownIsShown ? itemsContainerHeight : 0}
 					listOfItems={listOfItems}
+					filteredItems={filteredItems}
 				/>
 			</div>
 		);
