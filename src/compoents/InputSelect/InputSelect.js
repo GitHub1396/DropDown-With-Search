@@ -1,29 +1,34 @@
 import React from 'react';
 import './InputSelect.css';
 
-const InputSelect = ({ searchable, onSelectSearch, dropDownIsShown, onSelectIconClicked, listOfItems }) => {
-	const detailInformation = {};
-	console.log(listOfItems);
-	detailInformation.age = listOfItems.map(item => {
-		return item.dob.age;
-	});
-	console.log(detailInformation);
+const InputSelect = ({
+	searchable,
+	onSelectSearch,
+	dropDownIsShown,
+	onSelectIconClicked,
+	listOfItems,
+	itemsContainerHeight,
+}) => {
 	const selectData = listOfItems.map(item => {
 		return (
-			<li key={item.value} className="select-item">
-				<a href="/" className="select-item-link">
-					<span className="select-item-image-container">
+			<li key={item.id.value || 'sample' + item.email} className="select-item  clearfix">
+				<a href="/" className="select-item-link  clearfix">
+					<div className="select-item-image-container">
 						<img
 							src={item.picture.thumbnail}
-							alt={item.name.first + ' ' + this.name.last}
+							alt={item.name.first + ' ' + item.name.last}
 							className="select-item-image"
 						/>
-					</span>
-					<span className="select-item-description-container">
-						<ul className="select-details" />
-					</span>
-
-					{item.title}
+					</div>
+					<div className="select-item-description-container">
+						<ul className="select-details clearfix">
+							<li key={item.name.first} className="select-detail">
+								{`نام نمونه: ${item.name.first} نام خانوادگی نمونه:${item.name.last} `}
+							</li>
+							<li key={item.dob.age} className="select-detail">{`سن: ${item.dob.age}`}</li>
+							<li key={item.email} className="select-detail">{`پست الکترونیک نمونه: ${item.email}`}</li>
+						</ul>
+					</div>
 				</a>
 			</li>
 		);
@@ -47,7 +52,8 @@ const InputSelect = ({ searchable, onSelectSearch, dropDownIsShown, onSelectIcon
 			{searchable ? searchInput : null}
 			<ul
 				id="drpItemsContainer"
-				className={dropDownIsShown ? 'select-items slide-down' : 'select-items slide-up'}
+				className={dropDownIsShown ? 'select-items slide-down ' : 'select-items slide-up '}
+				style={{ maxHeight: dropDownIsShown ? itemsContainerHeight : 0 }}
 			>
 				{selectData}
 			</ul>
