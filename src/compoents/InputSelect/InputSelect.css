@@ -29,7 +29,8 @@
 }
 
 .select-item-link {
-  display: block;
+  display: flex;
+  flex-direction: row;
   padding: 10px;
   width: 100%;
   height: 100%;
@@ -107,23 +108,25 @@
 }
 
 .select-item-image {
-  height: 100%;
   border-radius: 50%;
-  display: block;
+  border: 1px solid #fff;
   margin: 0 auto;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .select-item-image-container {
+  align-items: center;
   width: 20%;
-  float: left;
   position: relative;
-  display: block;
+  display: flex;
+  border-left: 1px solid #ccc;
 }
 
 .select-item-description-container {
   width: 80%;
-  float: right;
   display: block;
+  padding: 10px;
 }
 
 .select-details {

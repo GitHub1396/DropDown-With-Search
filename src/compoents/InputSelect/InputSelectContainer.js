@@ -108,6 +108,8 @@ class InputSelectContainer extends Component {
 					itemsContainerHeight={dropDownIsShown ? itemsContainerHeight : 0}
 					listOfItems={listOfItems}
 					filteredItems={filteredItems}
+					itemBackgroundColor="#333"
+					itemFontColor="#fff"
 				/>
 			</div>
 		);

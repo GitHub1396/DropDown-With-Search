@@ -10,14 +10,20 @@ const InputSelect = ({
 	itemsContainerHeight,
 	onInputClicked,
 	filteredItems,
+	itemBackgroundColor,
+	itemFontColor,
 }) => {
 	const selectData =
 		filteredItems &&
 		filteredItems.map(item => {
 			return (
 				<li key={item.id.value || 'sample' + item.email} className="select-item  clearfix">
-					<a href="/" className="select-item-link  clearfix">
-						<div className="select-item-image-container">
+					<a
+						href="/"
+						className="select-item-link "
+						style={{ backgroundColor: itemBackgroundColor, color: itemFontColor }}
+					>
+						<div className="select-item-image-container clearfix">
 							<img
 								src={item.picture.thumbnail}
 								alt={item.name.first + ' ' + item.name.last}
@@ -27,7 +33,10 @@ const InputSelect = ({
 						<div className="select-item-description-container">
 							<ul className="select-details clearfix">
 								<li key={item.name.first} className="select-detail">
-									{`نام نمونه: ${item.name.first} نام خانوادگی نمونه:${item.name.last} `}
+									{`نام نمونه: ${item.name.first} `}
+								</li>
+								<li key={item.name.first} className="select-detail">
+									{`نام خانوادگی نمونه:${item.name.last} `}
 								</li>
 								<li key={item.dob.age} className="select-detail">{`سن: ${item.dob.age}`}</li>
 								<li key={item.email} className="select-detail">{`پست الکترونیک نمونه: ${
