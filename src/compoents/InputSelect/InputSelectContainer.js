@@ -71,6 +71,9 @@ class InputSelectContainer extends Component {
 
 	onSelectSearchHandler = e => {
 		const searchedText = e;
+		if (e !== '') {
+			this.setState({ dropDownIsShown: true });
+		}
 		this.setState({ searchedText });
 	};
 	onSelectIconClickedHandler = () => {
