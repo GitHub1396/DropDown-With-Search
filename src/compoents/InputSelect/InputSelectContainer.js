@@ -16,7 +16,6 @@ class InputSelectContainer extends Component {
 		searchedText: '',
 	};
 
-	// TODO: chevron direction is not changed while leaving input and clicking on it
 	componentDidMount() {
 		this.setState({ loading: true });
 		axios

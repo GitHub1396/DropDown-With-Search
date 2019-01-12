@@ -47,7 +47,6 @@ const InputSelect = ({
 					className="select-input-text"
 					onChange={e => onSelectSearch(e.target.value)}
 					onClick={onInputClicked}
-					onBlur={onInputClicked}
 					placeholder="لطفاً یک اسم را به عنوان نمونه وارد نمایید"
 				/>
 			</div>
