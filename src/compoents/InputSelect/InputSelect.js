@@ -33,15 +33,13 @@ const InputSelect = ({
 						<div className="select-item-description-container">
 							<ul className="select-details clearfix">
 								<li key={item.name.first} className="select-detail">
-									{`نام نمونه: ${item.name.first} `}
+									{`نام : ${item.name.first} `}
 								</li>
 								<li key={item.name.first} className="select-detail">
-									{`نام خانوادگی نمونه:${item.name.last} `}
+									{`نام خانوادگی :${item.name.last} `}
 								</li>
 								<li key={item.dob.age} className="select-detail">{`سن: ${item.dob.age}`}</li>
-								<li key={item.email} className="select-detail">{`پست الکترونیک نمونه: ${
-									item.email
-								}`}</li>
+								<li key={item.email} className="select-detail">{`ایمیل  : ${item.email}`}</li>
 							</ul>
 						</div>
 					</a>
@@ -56,7 +54,7 @@ const InputSelect = ({
 					className="select-input-text"
 					onChange={e => onSelectSearch(e.target.value)}
 					onClick={onInputClicked}
-					placeholder="لطفاً یک اسم را به عنوان نمونه وارد نمایید"
+					placeholder="لطفاً یک اسم را به عنوان  وارد نمایید"
 				/>
 			</div>
 			<div className="select-input-right-side" onClick={onSelectIconClicked}>
